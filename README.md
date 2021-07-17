@@ -1,12 +1,13 @@
 # WebRTC connector for [Yjs](https://github.com/yjs/yjs)
 
+This is a modified library that has a peer to peer security
 Propagates document updates peer-to-peer to all users using WebRTC.
 
 * Fast message propagation
 * Encryption and authorization over untrusted signaling servers
 * No setup required, public signaling servers are available
 * Very little server load
-* Not suited for a large amount of collaborators on a single document (each peer is connected to each other)
+* Implementation of Peer-To-Peer connection using JWT
 
 ## Setup
 
