@@ -1,6 +1,7 @@
 # WebRTC connector for [Yjs](https://github.com/yjs/yjs)
 
 This is a modified library that has a peer to peer security
+
 Propagates document updates peer-to-peer to all users using WebRTC.
 
 * Fast message propagation
