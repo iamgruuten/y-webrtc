@@ -1,4 +1,5 @@
-# WebRTC connector for [Yjs](https://github.com/yjs/yjs)
+# WebRTC connector for [Yjs](https://github.com/yjs/yjs) 
+# Still in progress
 
 This is a modified library that has a peer to peer security
 
