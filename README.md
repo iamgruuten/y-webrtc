@@ -2,6 +2,8 @@
 
 This is a modified library that has a peer to peer security
 
+# Still under construction... please wait...
+
 Propagates document updates peer-to-peer to all users using WebRTC.
 
 * Fast message propagation
