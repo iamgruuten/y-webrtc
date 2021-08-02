@@ -15,6 +15,9 @@ Propagates document updates peer-to-peer to all users using WebRTC.
 
 ## Setup
 
+In the forked repo, it does a post request to the backend service to verify the jwt.
+on line 201, you will need to replace if needed to an endpoint that does the service checking
+
 ### Install
 
 ```sh
