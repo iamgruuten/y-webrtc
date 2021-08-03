@@ -170,7 +170,8 @@ export class WebrtcConn {
    * @param {boolean} initiator
    * @param {string} remotePeerId
    * @param {Room} room
-   * @param {string} remoteJwtId
+   * @param {string} remoteJwt
+   * @param {string} remoteKey
    */
   constructor (signalingConn, initiator, remotePeerId, room, remoteJwt, remoteKey) {
     log('establishing connection to ', logging.BOLD, remotePeerId)
@@ -198,9 +199,7 @@ export class WebrtcConn {
       };
 
       axiosInstance().post("/peerAuthenticate", data).then(res => {
-          console.log("succeed to authenticate", remotePeerId)
-
-         signalingConn.send({ type: 'peerAuth', topic: room.name, data: { from: room.peerId, to: remotePeerId, isVerify: true }})
+          signalingConn.send({ type: 'peerAuth', topic: room.name, data: { from: room.peerId, to: remotePeerId, isVerify: true }})
         
           this.connected = true
           // send sync step 1
@@ -212,6 +211,7 @@ export class WebrtcConn {
           syncProtocol.writeSyncStep1(encoder, doc)
           sendWebrtcConn(this, encoder)
           const awarenessStates = awareness.getStates()
+        
           if (awarenessStates.size > 0) {
             const encoder = encoding.createEncoder()
             encoding.writeVarUint(encoder, messageAwareness)
@@ -435,6 +435,7 @@ export class Room {
     broadcastBcMessage(this, encoding.toUint8Array(encoderAwarenessState))
     console.log("Room", rooms.size)
 
+    //The code here is to retrieve the amount of people connected to the document
     axiosInstance().get("projects/" + roomName + "/info").then((res) => {
         console.log(res)
         if (res.data < 2) {
